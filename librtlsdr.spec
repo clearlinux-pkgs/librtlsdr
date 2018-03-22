@@ -4,7 +4,7 @@
 #
 Name     : librtlsdr
 Version  : 0.5.3
-Release  : 2
+Release  : 3
 URL      : https://github.com/osmocom/rtl-sdr/archive/v0.5.3.tar.gz
 Source0  : https://github.com/osmocom/rtl-sdr/archive/v0.5.3.tar.gz
 Summary  : C Utility Library
@@ -48,14 +48,14 @@ lib components for the librtlsdr package.
 
 
 %prep
-%setup -q -n librtlsdr-0.5.3
+%setup -q -n rtl-sdr-0.5.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1521738535
+export SOURCE_DATE_EPOCH=1521741459
 %reconfigure --disable-static
 make  %{?_smp_mflags}
 
@@ -67,7 +67,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1521738535
+export SOURCE_DATE_EPOCH=1521741459
 rm -rf %{buildroot}
 %make_install
 
