@@ -20,12 +20,14 @@ librtlsdr.so.0:rtlsdr_read_eeprom
 librtlsdr.so.0:rtlsdr_read_sync
 librtlsdr.so.0:rtlsdr_reset_buffer
 librtlsdr.so.0:rtlsdr_set_agc_mode
+librtlsdr.so.0:rtlsdr_set_bias_tee
 librtlsdr.so.0:rtlsdr_set_center_freq
 librtlsdr.so.0:rtlsdr_set_direct_sampling
 librtlsdr.so.0:rtlsdr_set_freq_correction
 librtlsdr.so.0:rtlsdr_set_offset_tuning
 librtlsdr.so.0:rtlsdr_set_sample_rate
 librtlsdr.so.0:rtlsdr_set_testmode
+librtlsdr.so.0:rtlsdr_set_tuner_bandwidth
 librtlsdr.so.0:rtlsdr_set_tuner_gain
 librtlsdr.so.0:rtlsdr_set_tuner_gain_mode
 librtlsdr.so.0:rtlsdr_set_tuner_if_gain
