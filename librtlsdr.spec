@@ -4,7 +4,7 @@
 #
 Name     : librtlsdr
 Version  : 0.6.0
-Release  : 6
+Release  : 7
 URL      : https://github.com/steve-m/librtlsdr/archive/0.6.0.tar.gz
 Source0  : https://github.com/steve-m/librtlsdr/archive/0.6.0.tar.gz
 Summary  : C Utility Library
