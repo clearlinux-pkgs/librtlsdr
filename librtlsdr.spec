@@ -4,12 +4,12 @@
 #
 Name     : librtlsdr
 Version  : 0.6.0
-Release  : 7
+Release  : 8
 URL      : https://github.com/steve-m/librtlsdr/archive/0.6.0.tar.gz
 Source0  : https://github.com/steve-m/librtlsdr/archive/0.6.0.tar.gz
 Summary  : C Utility Library
 Group    : Development/Tools
-License  : GPL-2.0
+License  : GPL-2.0 GPL-3.0
 Requires: librtlsdr-bin = %{version}-%{release}
 Requires: librtlsdr-lib = %{version}-%{release}
 Requires: librtlsdr-license = %{version}-%{release}
@@ -36,6 +36,7 @@ Group: Development
 Requires: librtlsdr-lib = %{version}-%{release}
 Requires: librtlsdr-bin = %{version}-%{release}
 Provides: librtlsdr-devel = %{version}-%{release}
+Requires: librtlsdr = %{version}-%{release}
 
 %description dev
 dev components for the librtlsdr package.
@@ -60,28 +61,38 @@ license components for the librtlsdr package.
 
 %prep
 %setup -q -n librtlsdr-0.6.0
+cd %{_builddir}/librtlsdr-0.6.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1538690583
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1604353191
+export GCC_IGNORE_WERROR=1
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %reconfigure --disable-static
 make  %{?_smp_mflags}
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-make VERBOSE=1 V=1 %{?_smp_mflags} check
+make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1538690583
+export SOURCE_DATE_EPOCH=1604353191
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/librtlsdr
-cp COPYING %{buildroot}/usr/share/package-licenses/librtlsdr/COPYING
+cp %{_builddir}/librtlsdr-0.6.0/COPYING %{buildroot}/usr/share/package-licenses/librtlsdr/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
+cp %{_builddir}/librtlsdr-0.6.0/debian/copyright %{buildroot}/usr/share/package-licenses/librtlsdr/78479bcc66c8173ca136c98e779b8f63563a5b94
 %make_install
 
 %files
@@ -99,7 +110,8 @@ cp COPYING %{buildroot}/usr/share/package-licenses/librtlsdr/COPYING
 
 %files dev
 %defattr(-,root,root,-)
-/usr/include/*.h
+/usr/include/rtl-sdr.h
+/usr/include/rtl-sdr_export.h
 /usr/lib64/librtlsdr.so
 /usr/lib64/pkgconfig/librtlsdr.pc
 
@@ -110,4 +122,5 @@ cp COPYING %{buildroot}/usr/share/package-licenses/librtlsdr/COPYING
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/librtlsdr/COPYING
+/usr/share/package-licenses/librtlsdr/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
+/usr/share/package-licenses/librtlsdr/78479bcc66c8173ca136c98e779b8f63563a5b94
