@@ -21,6 +21,7 @@ librtlsdr.so.0:rtlsdr_read_sync
 librtlsdr.so.0:rtlsdr_reset_buffer
 librtlsdr.so.0:rtlsdr_set_agc_mode
 librtlsdr.so.0:rtlsdr_set_bias_tee
+librtlsdr.so.0:rtlsdr_set_bias_tee_gpio
 librtlsdr.so.0:rtlsdr_set_center_freq
 librtlsdr.so.0:rtlsdr_set_direct_sampling
 librtlsdr.so.0:rtlsdr_set_freq_correction
