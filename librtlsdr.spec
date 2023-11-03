@@ -6,10 +6,10 @@
 # autospec commit: 250a666
 #
 Name     : librtlsdr
-Version  : 2.0.0
-Release  : 9
-URL      : https://github.com/steve-m/librtlsdr/archive/v2.0.0/librtlsdr-2.0.0.tar.gz
-Source0  : https://github.com/steve-m/librtlsdr/archive/v2.0.0/librtlsdr-2.0.0.tar.gz
+Version  : 2.0.1
+Release  : 10
+URL      : https://github.com/steve-m/librtlsdr/archive/v2.0.1/librtlsdr-2.0.1.tar.gz
+Source0  : https://github.com/steve-m/librtlsdr/archive/v2.0.1/librtlsdr-2.0.1.tar.gz
 Summary  : C Utility Library
 Group    : Development/Tools
 License  : GPL-2.0 GPL-3.0
@@ -65,10 +65,10 @@ license components for the librtlsdr package.
 
 
 %prep
-%setup -q -n librtlsdr-2.0.0
-cd %{_builddir}/librtlsdr-2.0.0
+%setup -q -n librtlsdr-2.0.1
+cd %{_builddir}/librtlsdr-2.0.1
 pushd ..
-cp -a librtlsdr-2.0.0 buildavx2
+cp -a librtlsdr-2.0.1 buildavx2
 popd
 
 %build
@@ -76,7 +76,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1698934274
+export SOURCE_DATE_EPOCH=1699020979
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -128,7 +128,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1698934274
+export SOURCE_DATE_EPOCH=1699020979
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/librtlsdr
 cp %{_builddir}/librtlsdr-%{version}/COPYING %{buildroot}/usr/share/package-licenses/librtlsdr/06877624ea5c77efe3b7e39b0f909eda6e25a4ec || :
